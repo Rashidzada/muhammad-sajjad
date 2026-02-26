@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio website of Muhammad Sajjad, DIT Student (2025-2026), showcasing skills, projects, education, and contact information.">
+  <title>Muhammad Sajjad | DIT Student (2025&ndash;2026)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (error) {
+        console.warn("Theme preference could not be loaded.", error);
+      }
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["Sora", "sans-serif"],
+            sans: ["Public Sans", "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 20px 60px -24px rgba(2, 6, 23, 0.35)"
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/custom.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body class="theme-surface antialiased selection:bg-teal-300/60 selection:text-slate-900">
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+    <div class="blob blob-three"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <header id="topNav" class="sticky top-0 z-50 border-b border-transparent transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary navigation">
+      <a href="#home" class="group flex items-center gap-3" data-scroll-link>
+        <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-sm font-bold text-white shadow-soft dark:bg-white dark:text-slate-900">MS</span>
+        <span class="leading-tight">
+          <span class="block font-display text-sm font-semibold text-slate-900 dark:text-slate-100">Muhammad Sajjad</span>
+          <span class="block text-xs text-slate-500 dark:text-slate-400">DIT Student (2025&ndash;2026)</span>
+        </span>
+      </a>
+
+      <div class="hidden items-center gap-2 md:flex">
+        <a href="#home" class="nav-link" data-nav-link data-scroll-link>Home</a>
+        <a href="#about" class="nav-link" data-nav-link data-scroll-link>About</a>
+        <a href="#skills" class="nav-link" data-nav-link data-scroll-link>Skills</a>
+        <a href="#projects" class="nav-link" data-nav-link data-scroll-link>Projects</a>
+        <a href="#education" class="nav-link" data-nav-link data-scroll-link>Education</a>
+        <a href="#contact" class="nav-link" data-nav-link data-scroll-link>Contact</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button type="button" class="theme-toggle-btn hidden sm:inline-flex" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="theme-icon-light" aria-hidden="true">&#9728;</span>
+          <span class="theme-icon-dark hidden" aria-hidden="true">&#9790;</span>
+          <span class="sr-only theme-state-label">Activate dark mode</span>
+        </button>
+        <button
+          id="mobileMenuButton"
+          type="button"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm backdrop-blur transition hover:border-slate-300 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 dark:border-slate-700/70 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:text-white md:hidden"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+          aria-label="Open menu"
+        >
+          <svg id="menuOpenIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menuCloseIcon" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobileMenu" class="hidden border-t border-slate-200/70 bg-white/95 px-4 py-4 shadow-lg backdrop-blur dark:border-slate-800 dark:bg-slate-950/95 md:hidden">
+      <div class="flex flex-col gap-2">
+        <a href="#home" class="mobile-nav-link" data-nav-link data-scroll-link>Home</a>
+        <a href="#about" class="mobile-nav-link" data-nav-link data-scroll-link>About</a>
+        <a href="#skills" class="mobile-nav-link" data-nav-link data-scroll-link>Skills</a>
+        <a href="#projects" class="mobile-nav-link" data-nav-link data-scroll-link>Projects</a>
+        <a href="#education" class="mobile-nav-link" data-nav-link data-scroll-link>Education</a>
+        <a href="#contact" class="mobile-nav-link" data-nav-link data-scroll-link>Contact</a>
+      </div>
+      <div class="mt-4">
+        <button type="button" class="theme-toggle-btn w-full justify-center" data-theme-toggle aria-label="Toggle dark mode (mobile)" aria-pressed="false">
+          <span class="theme-icon-light" aria-hidden="true">&#9728;</span>
+          <span class="theme-icon-dark hidden" aria-hidden="true">&#9790;</span>
+          <span>Toggle theme</span>
+          <span class="sr-only theme-state-label">Activate dark mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" data-section class="scroll-mt-28">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 pb-20 pt-12 sm:px-6 md:pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-8">
+        <div class="reveal" data-reveal>
+          <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-teal-200/70 bg-white/70 px-4 py-2 text-sm font-medium text-teal-700 shadow-sm backdrop-blur dark:border-teal-900/60 dark:bg-slate-900/60 dark:text-teal-300">
+            <span class="h-2 w-2 rounded-full bg-teal-500"></span>
+            Available for portfolio-ready opportunities
+          </p>
+          <h1 class="font-display text-4xl font-extrabold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+            Muhammad Sajjad
+          </h1>
+          <p class="mt-4 text-lg font-medium text-slate-700 dark:text-slate-200">
+            DIT Student (2025&ndash;2026)
+          </p>
+          <p class="mt-2 text-base text-slate-600 dark:text-slate-300">
+            Roll Number: <span class="font-semibold text-slate-900 dark:text-white">314851</span>
+          </p>
+          <p class="mt-6 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
+            Building a clean, practical portfolio while learning modern web development fundamentals with HTML, CSS, JavaScript, and Tailwind CSS.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" data-scroll-link class="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 dark:bg-teal-500 dark:text-slate-950 dark:hover:bg-teal-400">
+              View Projects
+            </a>
+            <a href="#contact" data-scroll-link class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white/80 px-5 py-3 text-sm font-semibold text-slate-800 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-400 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-100 dark:hover:border-slate-600">
+              Contact Me
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal lg:justify-self-end" data-reveal>
+          <div class="relative mx-auto w-full max-w-md">
+            <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-teal-300/35 via-amber-200/30 to-cyan-300/35 blur-2xl dark:from-teal-400/15 dark:via-amber-400/10 dark:to-cyan-400/15"></div>
+            <div class="glass-card relative overflow-hidden rounded-[2rem] p-5 shadow-soft">
+              <div class="rounded-2xl border border-white/60 bg-white/60 p-4 dark:border-slate-700/60 dark:bg-slate-900/60">
+                <img
+                  src="assets/img/profile.jpeg"
+                  alt="Portrait of Muhammad Sajjad"
+                  class="block h-auto w-full rounded-2xl"
+                >
+              </div>
+              <div class="mt-5 grid grid-cols-2 gap-3">
+                <div class="soft-card rounded-2xl p-4">
+                  <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Focus</p>
+                  <p class="mt-2 font-semibold text-slate-900 dark:text-white">Front-End Basics</p>
+                </div>
+                <div class="soft-card rounded-2xl p-4">
+                  <p class="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Stack</p>
+                  <p class="mt-2 font-semibold text-slate-900 dark:text-white">HTML / JS / Tailwind</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" data-section class="scroll-mt-28 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 reveal" data-reveal>
+          <p class="section-label">About</p>
+          <h2 class="section-title">A motivated DIT student focused on practical growth</h2>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
+          <div class="reveal" data-reveal>
+            <div class="glass-card h-full rounded-3xl p-5 sm:p-6">
+              <img
+                src="assets/img/profile.jpeg"
+                alt="Muhammad Sajjad profile photo"
+                class="block h-auto w-full rounded-2xl"
+              >
+            </div>
+          </div>
+          <div class="reveal" data-reveal>
+            <div class="glass-card h-full rounded-3xl p-6 sm:p-8">
+              <p class="text-base leading-8 text-slate-700 dark:text-slate-300">
+                I am Muhammad Sajjad, a DIT Student (2025&ndash;2026) with a strong interest in learning how modern websites are designed and built. I enjoy improving my front-end skills by creating clean layouts, responsive pages, and interactive features using JavaScript.
+              </p>
+              <p class="mt-4 text-base leading-8 text-slate-700 dark:text-slate-300">
+                My current goal is to build a professional portfolio, practice real-world UI patterns, and continue growing through small projects that strengthen my coding fundamentals and confidence.
+              </p>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div class="soft-card rounded-2xl p-4">
+                  <h3 class="font-display text-sm font-semibold text-slate-900 dark:text-white">Learning Style</h3>
+                  <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Hands-on practice through portfolio sections, mini projects, and UI improvements.</p>
+                </div>
+                <div class="soft-card rounded-2xl p-4">
+                  <h3 class="font-display text-sm font-semibold text-slate-900 dark:text-white">Current Priority</h3>
+                  <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Responsive design, JavaScript behavior, and clean code structure for deployment.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" data-section class="scroll-mt-28 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 reveal" data-reveal>
+          <p class="section-label">Skills</p>
+          <h2 class="section-title">Technologies I am learning and practicing</h2>
+          <p class="mt-3 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-300">
+            These cards are easy to edit. You can add or remove skills by duplicating any card in this section.
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="reveal soft-card rounded-2xl p-5" data-reveal>
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-orange-100 text-orange-700 dark:bg-orange-400/10 dark:text-orange-300">H</div>
+            <h3 class="font-display text-lg font-semibold text-slate-900 dark:text-white">HTML</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Semantic page structure, accessibility basics, and clean content layout.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="skill-pill">Semantic tags</span>
+              <span class="skill-pill">Forms</span>
+            </div>
+          </article>
+          <article class="reveal soft-card rounded-2xl p-5" data-reveal>
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100 text-sky-700 dark:bg-sky-400/10 dark:text-sky-300">C</div>
+            <h3 class="font-display text-lg font-semibold text-slate-900 dark:text-white">CSS</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Layouts, spacing, responsive behavior, and polished visual styling.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="skill-pill">Responsive UI</span>
+              <span class="skill-pill">Flexbox/Grid</span>
+            </div>
+          </article>
+          <article class="reveal soft-card rounded-2xl p-5" data-reveal>
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300">J</div>
+            <h3 class="font-display text-lg font-semibold text-slate-900 dark:text-white">JavaScript</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Interactive navigation, theme toggle, form validation, and DOM updates.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="skill-pill">DOM</span>
+              <span class="skill-pill">Events</span>
+            </div>
+          </article>
+          <article class="reveal soft-card rounded-2xl p-5" data-reveal>
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-teal-100 text-teal-700 dark:bg-teal-400/10 dark:text-teal-300">T</div>
+            <h3 class="font-display text-lg font-semibold text-slate-900 dark:text-white">Tailwind CSS</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Utility-first styling via CDN for fast prototypes and clean design systems.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="skill-pill">Utilities</span>
+              <span class="skill-pill">Dark mode</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" data-section class="scroll-mt-28 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 reveal" data-reveal>
+          <p class="section-label">Projects</p>
+          <h2 class="section-title">Portfolio work and upcoming practice builds</h2>
+          <p class="mt-3 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-300">
+            Placeholder cards are included for now. Replace titles, descriptions, and links when real projects are ready.
+          </p>
+        </div>
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <article class="reveal project-card rounded-3xl p-6" data-reveal>
+            <div class="project-badge">Coming Soon</div>
+            <h3 class="mt-4 font-display text-xl font-semibold text-slate-900 dark:text-white">Personal Portfolio Website</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              A responsive portfolio built with HTML, Tailwind CSS (CDN), and JavaScript to showcase profile, skills, and projects.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="skill-pill">HTML</span>
+              <span class="skill-pill">Tailwind CSS</span>
+              <span class="skill-pill">JavaScript</span>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="#" class="project-link" aria-disabled="true">Live Demo</a>
+              <a href="#" class="project-link" aria-disabled="true">Source Code</a>
+            </div>
+          </article>
+
+          <article class="reveal project-card rounded-3xl p-6" data-reveal>
+            <div class="project-badge">Coming Soon</div>
+            <h3 class="mt-4 font-display text-xl font-semibold text-slate-900 dark:text-white">Student Record UI</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              A beginner-friendly interface concept for displaying student data with search and clean table layouts.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="skill-pill">UI Design</span>
+              <span class="skill-pill">Responsive</span>
+              <span class="skill-pill">Practice</span>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="#" class="project-link" aria-disabled="true">Live Demo</a>
+              <a href="#" class="project-link" aria-disabled="true">Source Code</a>
+            </div>
+          </article>
+
+          <article class="reveal project-card rounded-3xl p-6" data-reveal>
+            <div class="project-badge">Coming Soon</div>
+            <h3 class="mt-4 font-display text-xl font-semibold text-slate-900 dark:text-white">Landing Page Clone Practice</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              A front-end exercise focused on layout recreation, section spacing, and reusable components.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="skill-pill">CSS</span>
+              <span class="skill-pill">Flexbox</span>
+              <span class="skill-pill">UI Practice</span>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="#" class="project-link" aria-disabled="true">Live Demo</a>
+              <a href="#" class="project-link" aria-disabled="true">Source Code</a>
+            </div>
+          </article>
+
+          <article class="reveal project-card rounded-3xl p-6 md:col-span-2 xl:col-span-3" data-reveal>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <div class="project-badge">Planning</div>
+                <h3 class="mt-4 font-display text-xl font-semibold text-slate-900 dark:text-white">Next Project Slot</h3>
+                <p class="mt-2 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-300">
+                  Add your next real project here. Duplicate any card, update the title, description, and links, and your portfolio will grow over time.
+                </p>
+              </div>
+              <a href="#contact" data-scroll-link class="inline-flex items-center justify-center rounded-xl bg-teal-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-teal-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400">
+                Let&apos;s Connect
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" data-section class="scroll-mt-28 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 reveal" data-reveal>
+          <p class="section-label">Education</p>
+          <h2 class="section-title">Current academic profile</h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[0.7fr_1.3fr]">
+          <div class="reveal" data-reveal>
+            <div class="soft-card rounded-3xl p-6">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Timeline</p>
+              <ol class="mt-6 space-y-4">
+                <li class="relative pl-7">
+                  <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-teal-500"></span>
+                  <p class="text-sm font-semibold text-slate-900 dark:text-white">2025&ndash;2026</p>
+                  <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Diploma in Information Technology (DIT)</p>
+                </li>
+                <li class="relative pl-7 opacity-70">
+                  <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+                  <p class="text-sm font-semibold text-slate-700 dark:text-slate-200">Next Step</p>
+                  <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">More portfolio projects and real-world practice</p>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="reveal" data-reveal>
+            <article class="glass-card rounded-3xl p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center rounded-full border border-teal-200/70 bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-teal-700 dark:border-teal-900/60 dark:bg-teal-400/10 dark:text-teal-300">
+                  DIT Student
+                </span>
+                <span class="inline-flex items-center rounded-full border border-amber-200/80 bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-700 dark:border-amber-900/70 dark:bg-amber-400/10 dark:text-amber-300">
+                  Roll No 314851
+                </span>
+              </div>
+              <h3 class="mt-5 font-display text-2xl font-semibold text-slate-900 dark:text-white">Diploma in Information Technology (2025&ndash;2026)</h3>
+              <p class="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                Currently pursuing DIT with a focus on foundational computer and web development skills. This portfolio is part of ongoing practice to document progress and present work professionally.
+              </p>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div class="soft-card rounded-2xl p-4">
+                  <p class="text-xs uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Program</p>
+                  <p class="mt-2 font-semibold text-slate-900 dark:text-white">DIT (Editable Institution Name)</p>
+                </div>
+                <div class="soft-card rounded-2xl p-4">
+                  <p class="text-xs uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Status</p>
+                  <p class="mt-2 font-semibold text-slate-900 dark:text-white">In Progress</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" data-section class="scroll-mt-28 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 reveal" data-reveal>
+          <p class="section-label">Contact</p>
+          <h2 class="section-title">Get in touch</h2>
+          <p class="mt-3 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-300">
+            This form is front-end only. It validates input and shows a success message on the page (no backend).
+          </p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="reveal" data-reveal>
+            <div class="glass-card h-full rounded-3xl p-6 sm:p-8">
+              <h3 class="font-display text-xl font-semibold text-slate-900 dark:text-white">Contact Details</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                For collaboration, practice opportunities, or portfolio feedback, feel free to send a message.
+              </p>
+              <div class="mt-6 soft-card rounded-2xl p-4">
+                <p class="text-xs uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Email</p>
+                <a href="mailto:sajjadalikhan24@gmail.com" class="mt-2 block break-all font-semibold text-teal-700 transition hover:text-teal-600 dark:text-teal-300 dark:hover:text-teal-200">
+                  sajjadalikhan24@gmail.com
+                </a>
+              </div>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <div class="soft-card rounded-2xl p-4">
+                  <p class="text-xs uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Availability</p>
+                  <p class="mt-2 text-sm font-semibold text-slate-900 dark:text-white">Learning &amp; building</p>
+                </div>
+                <div class="soft-card rounded-2xl p-4">
+                  <p class="text-xs uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Location</p>
+                  <p class="mt-2 text-sm font-semibold text-slate-900 dark:text-white">Editable in content</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal" data-reveal>
+            <div class="glass-card rounded-3xl p-6 sm:p-8">
+              <form id="contactForm" novalidate class="space-y-5">
+                <div>
+                  <label for="name" class="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-100">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    required
+                    class="form-input w-full rounded-xl border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400/30 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-100 dark:placeholder:text-slate-500"
+                    placeholder="Your name"
+                  >
+                </div>
+
+                <div>
+                  <label for="email" class="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-100">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    class="form-input w-full rounded-xl border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400/30 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-100 dark:placeholder:text-slate-500"
+                    placeholder="you@example.com"
+                  >
+                </div>
+
+                <div>
+                  <label for="message" class="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-100">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    class="form-input w-full rounded-xl border border-slate-300 bg-white/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400/30 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-100 dark:placeholder:text-slate-500"
+                    placeholder="Write your message..."
+                  ></textarea>
+                </div>
+
+                <div id="formStatus" class="hidden rounded-xl border px-4 py-3 text-sm" role="status" aria-live="polite"></div>
+
+                <button
+                  type="submit"
+                  class="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 dark:bg-teal-500 dark:text-slate-950 dark:hover:bg-teal-400"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200/80 py-8 dark:border-slate-800">
+    <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 text-sm text-slate-600 sm:px-6 sm:flex-row sm:items-center sm:justify-between lg:px-8 dark:text-slate-300">
+      <p>
+        &copy; <span id="currentYear"></span> Muhammad Sajjad. All rights reserved.
+      </p>
+      <p>
+        Built with HTML, Tailwind CSS, and JavaScript.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
